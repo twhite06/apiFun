@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> API Homework </title>
+		<script type="text/javascript">
+			function mainFunction(){
+				var ajaxRequest = new XMLHttpRequest();
+				ajaxRequest.onreadystatechange = function(){
+					console.log("ready state changed");
+				}
+				ajaxRequest.open("GET", "http://www.recipepuppy.com/api/", true);
+				ajaxRequest.send();
+				
+			
+		</script>
+</html>
