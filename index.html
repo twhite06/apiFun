@@ -1,16 +1,61 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 	<head>
 		<title> API Homework </title>
-		<script type="text/javascript">
-			function mainFunction(){
+		<meta charset="utf-8"/>
+		<script>
+			function mainFunction() {
+				
 				var ajaxRequest = new XMLHttpRequest();
-				ajaxRequest.onreadystatechange = function(){
-					console.log("ready state changed");
-				}
+
+				console.log("1 - request object created");
+
 				ajaxRequest.open("GET", "http://www.recipepuppy.com/api/", true);
-				ajaxRequest.send();	
+
+				console.log("2 - opened request file");
+
+				ajaxRequest.onreadystatechange = function(){
+
+					console.log("ready state changed");
+
+					if(ajaxRequest.readystate == 1){
+
+						console.log("Established server connection. ");
+
+					} else if(ajaxRequest.readyState == 2){
+
+						console.log("Request received by server.");
+
+					} else if(ajaxRequest.readyState == 3){
+
+						console.log("Processing request.");
+
+					} else if(ajaxRequest.readyState == 4){
+
+						console.log("Done loading!");
+
+						if (ajaxRequest.status == 200){
+							// Code goes inside of this if statement for what to do with file received
+							console.log("File loaded successfully");
+							var JSONobject = JSON.parse(ajaxRequest.responsetext);
+							document.getElementById("API").innerHTML(JSONobject[0].title);
+							document.getElementById("API").innerHTML(JSONobject[0].thumbnail);
+							document.getElementById("API").innerHTML(JSONobject[0].ingredients);
+						}
+					} else{
+						console.log("Something went wrong.");
+					}
 			}
+				ajaxRequest.send();
+				console.log("3 - request sent");
+		}
+			
 		</script>
 	</head>
+
+	<body onload="mainFunction()">
+		<div id = "API"> 
+
+		</div>
+	</body>
 </html>
