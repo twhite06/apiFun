@@ -11,6 +11,10 @@
 				console.log("1 - request object created");
 
 				ajaxRequest.open("GET", "http://www.recipepuppy.com/api/", true);
+				
+				// Tried this and a few other fixes from online but didn't work
+				
+				// ajaxRequest.setRequestHeader('Access-Control-Allow-Origin', '*');
 
 				console.log("2 - opened request file");
 
@@ -57,5 +61,15 @@
 		<div id = "API"> 
 
 		</div>
+		<p>
+		  1. The Api That I found links to a database of recipes. With it, you are able to get the title of a specific dish,
+		  the image for the dish, and the ingredients to display on the page.
+			
+		  2. http://www.recipepuppy.com/api/
+			
+		  3. I used the title, thumbnal, and ingredients of the first recipe
+			
+		  4. This api could be useful for an app that picks custom recipes or generates random meals for a user.
+		</p>
 	</body>
 </html>
